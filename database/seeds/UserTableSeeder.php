@@ -9,8 +9,8 @@ use Spatie\Seeders\Faker;
  */
 class UserTableSeeder extends Seeder
 {
-    const WEBMASTER = 'webmaster'; // Role name for webmasters in the application.
-    const RVB       = 'admin';     // Role name for board members in the application.
+    const WEBMASTER = 'admin';
+    const USER      = 'user';
 
     /**
      * Run the database seeds.
@@ -22,14 +22,14 @@ class UserTableSeeder extends Seeder
         collect($this->organisationMembers())->each(function (array $name): void {
             [$firstName, $lastName] = $name;
 
-            $data = ['voornaam' => $name[0], 'achternaam' => $name[1], 'email' => strtolower($name[0]) . '@activisme.be', 'password' => 'secret'];
+            $data = ['voornaam' => $name[0], 'achternaam' => $name[1], 'email' => strtolower($name[0]) . '@support.be', 'password' => 'secret'];
             $user = $this->createBackUser($data);
 
-            if ($this->isInWebmasterArray($user->email)) {
+            if ($this->isInAdminArray($user->email)) {
                 $user->assignRole(self::WEBMASTER);
             }
 
-            $user->assignRole(self::RVB);
+            $user->assignRole(self::USER);
         });
     }
 
@@ -38,9 +38,9 @@ class UserTableSeeder extends Seeder
      *
      * @return bool
      */
-    protected function isInWebmasterArray(string $email): bool
+    protected function isInAdminArray(string $email): bool
     {
-        return in_array($email, $this->organisationWebmasters());
+        return in_array($email, $this->organisationAdmins());
     }
 
 
@@ -49,9 +49,9 @@ class UserTableSeeder extends Seeder
      *
      * @return array
      */
-    protected function organisationWebmasters(): array
+    protected function organisationAdmins(): array
     {
-        return ['tim@activisme.be'];
+        return ['topairy@gmail.com'];
     }
 
     /**
@@ -63,7 +63,7 @@ class UserTableSeeder extends Seeder
      */
     protected function organisationMembers(): array
     {
-        return [['Tim', 'Joosten'], ['Sara', 'Landuyt'], ['Tom', 'Manheaghe']];
+        return [['Tim', 'Joosten']];
     }
 
     /**
