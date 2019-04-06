@@ -51,7 +51,7 @@ class UserTableSeeder extends Seeder
      */
     protected function organisationAdmins(): array
     {
-        return ['topairy@gmail.com'];
+        return ['tim@support.be'];
     }
 
     /**
