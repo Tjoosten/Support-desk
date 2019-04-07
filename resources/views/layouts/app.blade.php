@@ -76,6 +76,18 @@
                     <a class="nav-link {{ active('users.*') }}" href="{{ route('users.index') }}">
                         <i class="fe fe-users mr-1 text-secondary"></i> Gebruikers
                     </a>
+
+                    <a class="nav-link" href="">
+                        <i class="fe fe-users mr-1 text-secondary"></i> Teams
+                    </a>
+
+                    <a class="nav-link" href="">
+                        <i class="fe fe-tag mr-1 text-secondary"></i> Tags
+                    </a>
+                    
+                    <a class="nav-link" href="">
+                        <i class="fe fe-list mr-1 text-secondary"></i> Projecten
+                    </a>
                 @endif
             </nav>
         </div>
