@@ -51,7 +51,7 @@ class AccountController extends Controller
     public function updateInformation(InformationValidator $input): RedirectResponse
     {
         if (auth()->user()->update($input->all())) { // Update confirmation
-            flash('Uw accunt informatie is met success aangepast.')->success()->important();
+            flash('Uw account informatie is met success aangepast.')->success()->important();
         }
 
         return redirect()->back(); // HTTP 302 - Redirect

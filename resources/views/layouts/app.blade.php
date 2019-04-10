@@ -81,8 +81,12 @@
                         <i class="fe fe-users mr-1 text-secondary"></i> Teams
                     </a>
 
-                    <a class="nav-link" href="">
+                    <a class="nav-link {{ active('tags.*') }}" href="{{ route('tags.dashboard') }}">
                         <i class="fe fe-tag mr-1 text-secondary"></i> Tags
+                    </a>
+
+                    <a class="nav-link" href="">
+                        <i class="fe fe-list mr-1 text-secondary"></i> Tickets
                     </a>
                     
                     <a class="nav-link" href="">

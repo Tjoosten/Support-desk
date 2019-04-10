@@ -6,6 +6,7 @@ use App\Http\Controllers\NotificationController;
 use App\Http\Controllers\Users\AccountController;
 use App\Http\Controllers\Users\IndexController;
 use App\Http\Controllers\Users\LockController;
+use App\Http\Controllers\TagsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,3 +52,10 @@ Route::patch('/gebruikers/{user}', [IndexController::class, 'update'])->name('us
 Route::get('/gebruikers/nieuw', [IndexController::class, 'create'])->name('users.create');
 Route::post('/gebruikers/nieuw', [IndexController::class, 'store'])->name('users.store');
 Route::get('/gebruikers/{filter?}', [IndexController::class, 'index'])->name('users.index');
+
+// Tags routes 
+Route::get('/tags', [TagsController::class, 'index'])->name('tags.dashboard');
+Route::get('/tags/nieuw', [TagsController::class, 'create'])->name('tags.create');
+Route::post('/tags/nieuw', [TagsController::class, 'store'])->name('tags.store');
+Route::get('/tags/{tag}', [TagsController::class, 'show'])->name('tags.show');
+Route::get('/tags/verwijder/{tag}', [TagsController::class, 'destroy'])->name('tags.delete');
