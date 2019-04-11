@@ -27,7 +27,7 @@
 
                 <div class="form-group col-12">
                     <label for="description">Description <span class="text-danger">*</span></label>
-                    <textarea class="form-control @error('description', 'is-invalid')" rows="6" id="description" placeholder="Short description of the label" @input('description')>{{ old('description') }}</textarea>
+                    <textarea class="form-control @error('description', 'is-invalid')" rows="3" id="description" placeholder="Short description of the label" @input('description')>{{ old('description') }}</textarea>
                     @error('description')
                 </div>
             </div>

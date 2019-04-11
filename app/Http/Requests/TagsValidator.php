@@ -24,6 +24,24 @@ class TagsValidator extends FormRequest
         return true;
     }
 
+    private function methodRules(): array 
+    {
+        switch ($this->method()) {
+            case 'POST':  return $this->getPostRules();
+            case 'PATCH': return $this->getPatchRules();
+        }
+    }
+
+    private function getPatchRules(): array 
+    {
+        return ['name' => ['required', 'string', 'max:191', 'unique:tags,name,' . $this->tag->id]]; 
+    }
+
+    private function getPostRules(): array 
+    {
+        return ['name' => ['required', 'string', 'max:191', 'unique:tags,name']];
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -31,9 +49,7 @@ class TagsValidator extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            'name' => ['required', 'string', 'max:191', 'unique:tags,name'],
-            'description' => ['required', 'string', 'max:191'],
-        ];
+        $baseRules = ['description' => ['required', 'string', 'max:191']];
+        return array_merge($baseRules, $this->methodRules());
     }
 }

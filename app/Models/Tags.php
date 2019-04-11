@@ -2,15 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use App\Repositories\TagsRepository;
 
 /**
  * Class Tags 
  * 
  * @package App\Models
  */
-class Tags extends Model
+class Tags extends TagsRepository 
 {
     /**
      * Mass-assignable fields for the database table.

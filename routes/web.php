@@ -58,4 +58,5 @@ Route::get('/tags', [TagsController::class, 'index'])->name('tags.dashboard');
 Route::get('/tags/nieuw', [TagsController::class, 'create'])->name('tags.create');
 Route::post('/tags/nieuw', [TagsController::class, 'store'])->name('tags.store');
 Route::get('/tags/{tag}', [TagsController::class, 'show'])->name('tags.show');
-Route::get('/tags/verwijder/{tag}', [TagsController::class, 'destroy'])->name('tags.delete');
+Route::patch('/tags/{tag}', [TagsController::class, 'update'])->name('tags.update');
+Route::match(['get', 'delete'], '/tags/verwijder/{tag}', [TagsController::class, 'destroy'])->name('tags.delete');

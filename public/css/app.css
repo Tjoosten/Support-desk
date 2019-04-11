@@ -11819,6 +11819,28 @@ a.text-dark:focus {
   box-shadow: none;
 }
 
+.icon i,
+.icon a {
+  vertical-align: -1px;
+}
+
+.list-group-item.active .icon {
+  color: inherit !important;
+}
+
+.list-group-transparent .list-group-item {
+  background: none;
+  border: 0;
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+}
+
+.list-group-transparent .list-group-item.active {
+  background: rgba(70, 127, 207, 0.06);
+  color: #467fcf;
+  font-weight: 600;
+}
+
 .blankslate {
   background-color: #fff;
   border-radius: 0.25rem;

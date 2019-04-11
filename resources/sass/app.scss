@@ -11,6 +11,34 @@
 @import '~bootstrap/scss/bootstrap';
 @import "~primer-blankslate/index.scss";
 
+.icon i,
+.icon a {
+  vertical-align: -1px;
+}
+
+.list-group-item {
+	&.active {
+		.icon {
+			color: inherit !important;
+		}
+	}
+}
+
+.list-group-transparent {
+	.list-group-item {
+    background: none;
+		border: 0;
+		padding: .5rem 1rem;
+		border-radius: 3px;
+
+		&.active {
+      background: rgba(70, 127, 207, 0.06);
+      color: #467fcf;
+			font-weight: 600;
+		}
+	}
+}
+
 .blankslate {
   background-color: #fff;
   border-radius: 0.25rem;

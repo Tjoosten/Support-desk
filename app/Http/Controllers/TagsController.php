@@ -64,9 +64,21 @@ class TagsController extends Controller
     }
 
     /**
+     * Method for updating the ticket tag in the application. 
+     * 
+     * @param  TagsValidator $input  The form request that handles all the validation logic. 
+     * @param  Tags          $tag    The Resource entity from the given tag.
+     * @return RedirectResponse
+     */
+    public function update(TagsValidator $input, Tags $tag): RedirectResponse 
+    {
+
+    }
+
+    /**
      * Method or displaying the information (edit form) from the given tag. 
      * 
-     * @param  Tags $tag The storage entity from the given tag. 
+     * @param  Tags $tag   The storage entity from the given tag. 
      * @return Renderable
      */
     public function show(Tags $tag): Renderable 
@@ -78,16 +90,17 @@ class TagsController extends Controller
     /**
      * Method for deleting a ticket tag in the application. 
      * 
-     * @param  Tags $tag The database entity form the given tag.
-     * @return RedirectResponse 
+     * @param  Request  $request    The request instance that holds all the request information. 
+     * @param  Tags     $tag        The database entity form the given tag.
+     * @return Rendarable|RedirectResponse 
      */
-    public function destroy(Request $request, Tags $tag): RedirectResponse 
+    public function destroy(Request $request, Tags $tag)
     {
-        if ($tag->delete()) { // The tag is deleted in the database storage.
-            auth()->user()->logActivity($tag, 'Tags', 'Has deleted an issue tag with the name ' . $tag->name);
-            flash("The ticket tag with the name <strong>{$tag->name}</strong> has been deleted in the application.")->info()->important();
+        if ($request->isMethod('GET')) {
+            return view('tags.delete', compact('tag'));
         }
 
+        $tag->processDelete(); // Logging + delete and flash session output.
         return redirect()->route('tags.dashboard');
     }
 }
